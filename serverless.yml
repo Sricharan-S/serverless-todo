@@ -1,0 +1,39 @@
+service: todo-serverless
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  deploymentMethod: direct
+  stage: dev
+  region: ap-south-1
+  runtime: nodejs14.x
+
+functions:
+  addTodo:
+    handler: todoHandler.addTodo
+    events:
+      - httpApi:
+          path: /add_todo
+          method: post
+  getTodos:
+    handler: todoHandler.getTodos
+    events:
+      - httpApi:
+          path: /get_todos
+          method: get
+
+resources:
+  Resources:
+    TodoTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        TableName: "TodosTable"
+        AttributeDefinitions:
+        - AttributeName: "ID"
+          AttributeType: "S"
+        KeySchema:
+        - AttributeName: "ID"
+          KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 2
+          WriteCapacityUnits: 2    

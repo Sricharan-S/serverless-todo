@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "aws-sdk": "^2.1243.0"
+  },
+  "dependencies": {
+    "uuid": "^9.0.0"
+  }
+}
