@@ -24,11 +24,11 @@ module.exports.returnSuccessResponse = (
     try {
       const response = {
         statusCode: statusCode,
-        headers: {
-          'Content-Type': 'application/json',
+        headers: { 
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': true,
-        },
+          'Access-Control-Allow-Methods': 'POST, PUT, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
+      },
         body: convertToJSONResponse(body),
       };
   

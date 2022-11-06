@@ -7,6 +7,15 @@ provider:
   stage: dev
   region: ap-south-1
   runtime: nodejs14.x
+  httpApi:
+    cors: true
+  iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:*
+        Resource:
+          - arn:aws:dynamodb:ap-south-1:363718083353:table/TodosTable
+
 
 functions:
   addTodo:
